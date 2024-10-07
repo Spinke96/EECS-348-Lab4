@@ -9,22 +9,21 @@ void rec(int score,int TD_counter, int FG_counter, int s_counter, int TD2_counte
     if(score == 0){
         printing(TD_counter,FG_counter, s_counter, TD2_counter, TD1_counter);
     }
-    if(score - 8 >= 0){
-        rec(score-8,TD_counter,FG_counter,s_counter,TD2_counter+1,TD1_counter);
-    }
-    if(score - 7 >= 0){
-        rec(score-7,TD_counter,FG_counter,s_counter,TD2_counter,TD1_counter+1);
-    }
-    if(score - 6 >= 0){
-        rec(score-6,TD_counter+1,FG_counter,s_counter,TD2_counter,TD1_counter);
-    }
-    if(score - 3 >= 0){
-        rec(score-3,TD_counter,FG_counter+1,s_counter,TD2_counter,TD1_counter);
-    }
-    if(score - 2 >= 0){
+    if(score - 2 >= 0 && !(TD1_counter >0|| TD2_counter >0 || TD_counter >0 || FG_counter >0)){
         rec(score-2,TD_counter,FG_counter,s_counter+1,TD2_counter,TD1_counter);
     }
-
+    if(score - 3 >= 0 && !(TD1_counter >0|| TD2_counter >0 || TD_counter >0)){
+        rec(score-3,TD_counter,FG_counter+1,s_counter,TD2_counter,TD1_counter);
+    }
+    if(score - 6 >= 0 && !(TD1_counter >0|| TD2_counter >0)){
+        rec(score-6,TD_counter+1,FG_counter,s_counter,TD2_counter,TD1_counter);
+    }
+    if(score - 7 >= 0 && !(TD2_counter >0)){
+        rec(score-7,TD_counter,FG_counter,s_counter,TD2_counter,TD1_counter+1);
+    }
+    if(score - 8 >= 0 ){
+        rec(score-8,TD_counter,FG_counter,s_counter,TD2_counter+1,TD1_counter);
+    }
 }
 
 void football_score(int score){
